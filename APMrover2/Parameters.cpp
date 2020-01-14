@@ -226,6 +226,15 @@ const AP_Param::Info Rover::var_info[] = {
     // @User: Standard
     GSCALAR(turn_max_g,             "TURN_MAX_G",      0.6f),
 
+    // @Param: OBJ_TRIG_DIST
+    // @DisplayName: Trigger Distance for Rangefinder 
+    // @Description: This minimum distance where the rangefinder will trigger HOLD mode for the vessel.  
+    // @Units: cm
+    // @Range: 0 10000
+    // @Increment: 1
+    // @User: Standard
+    GSCALAR(rangefinder_trigger_cm, "OBJ_TRIG_DIST", 100),
+
     // variables not in the g class which contain EEPROM saved variables
 
     // @Group: COMPASS_

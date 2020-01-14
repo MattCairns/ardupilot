@@ -110,9 +110,6 @@ void Rover::read_rangefinders(void)
     // OPEN OCEAN ROBOTICS START //
     ///////////////////////////////
 
-    // This should be a variable availabile in mission planner.
-    uint16_t rangefinder_trigger_cm = 200;
-
     AP_RangeFinder_Backend *s0 = rangefinder.get_backend(0);
 
     // Disable the rangefinder at runtime if it is disconnected
@@ -125,7 +122,7 @@ void Rover::read_rangefinders(void)
         // How to get the rangefinder1 distance recording?
         uint16_t dist = s0->distance_cm();
 
-        if (dist < rangefinder_trigger_cm) {
+        if (dist < g.rangefinder_trigger_cm) {
             // Log the distance from sensor
             gcs().send_text(MAV_SEVERITY_INFO, "LiDAR: Obstacle %u cm away.", dist);
 
