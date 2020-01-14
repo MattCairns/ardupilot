@@ -1,4 +1,5 @@
 #include "Rover.h"
+#include "mode.h"
 
 #include <AP_RangeFinder/AP_RangeFinder_Backend.h>
 #include <AP_VisualOdom/AP_VisualOdom.h>
@@ -104,6 +105,39 @@ void Rover::accel_cal_update() {
 void Rover::read_rangefinders(void)
 {
     rangefinder.update();
+
+    ///////////////////////////////
+    // OPEN OCEAN ROBOTICS START //
+    ///////////////////////////////
+
+    // This should be a variable availabile in mission planner.
+    uint16_t rangefinder_trigger_cm = 200;
+
+    AP_RangeFinder_Backend *s0 = rangefinder.get_backend(0);
+
+    // Disable the rangefinder at runtime if it is disconnected
+    if (s0 == nullptr || s0->status() == RangeFinder::Status::NotConnected) {
+        return;
+    }
+
+    // We only have a single rangfinder, check if it has data available.
+    if (s0 != nullptr && s0->has_data()) {
+        // How to get the rangefinder1 distance recording?
+        uint16_t dist = s0->distance_cm();
+
+        if (dist < rangefinder_trigger_cm) {
+            gcs().send_text(MAV_SEVERITY_INFO, "Rangfinder obstacle %u cm away.", dist);
+
+            if (control_mode->is_autopilot_mode()) {
+                set_mode(mode_hold, ModeReason::AVOIDANCE_RECOVERY);
+            }
+        }
+    }
+
+    /////////////////////////////
+    // OPEN OCEAN ROBOTICS END //
+    /////////////////////////////
+    
     Log_Write_Depth();
 }
 
