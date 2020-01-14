@@ -126,11 +126,26 @@ void Rover::read_rangefinders(void)
         uint16_t dist = s0->distance_cm();
 
         if (dist < rangefinder_trigger_cm) {
-            gcs().send_text(MAV_SEVERITY_INFO, "Rangfinder obstacle %u cm away.", dist);
+            // Log the distance from sensor
+            gcs().send_text(MAV_SEVERITY_INFO, "LiDAR: Obstacle %u cm away.", dist);
 
+            // Set control mode to HOLD if object in way.
             if (control_mode->is_autopilot_mode()) {
-                set_mode(mode_hold, ModeReason::AVOIDANCE_RECOVERY);
+                set_mode(mode_hold, ModeReason::AVOIDANCE);
+
+                // Record time when vessel entered HOLD
+                obstacle.detected_time_ms = AP_HAL::millis();
             }
+        }
+    }
+
+
+    // If there has been no object for 5 seconds then go back to Auto
+    if ( AP_HAL::millis() > obstacle.detected_time_ms + 5000) {
+        // If we are in HOLD then change back to Auto if unobstructed.
+        if (control_mode->mode_number() == static_cast<uint32_t>(4)) {
+            gcs().send_text(MAV_SEVERITY_INFO, "No obstacle in path, returning to AUTO.");
+            set_mode(mode_auto, ModeReason::AVOIDANCE_RECOVERY);
         }
     }
 

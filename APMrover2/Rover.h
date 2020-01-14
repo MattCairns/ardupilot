@@ -223,6 +223,14 @@ private:
     // true if we have a position estimate from AHRS
     bool have_position;
 
+    struct {
+        // Record current distance from object.
+        uint16_t rngfdr_distance_cm;
+
+        // Record last time object was detected
+        uint32_t detected_time_ms;
+    } obstacle;
+
     // range finder last update (used for DPTH logging)
     uint32_t rangefinder_last_reading_ms;
 
