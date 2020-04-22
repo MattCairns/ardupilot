@@ -126,7 +126,7 @@ void Rover::read_rangefinders(void)
         // How to get the rangefinder1 distance recording?
         uint16_t dist = s0->distance_cm();
 
-        if (dist < g.rangefinder_trigger_cm) {
+        if (dist < g.rangefinder_trigger_cm && dist > g.rangefinder_min_thresh) {
             // Log the distance from sensor
             gcs().send_text(MAV_SEVERITY_INFO, "LiDAR: Obstacle %u cm away.", dist);
 
