@@ -151,6 +151,7 @@ public:
         k_param_sonar_enabled = 190,  // deprecated, can be removed
         k_param_sonar_old,            // unused
         k_param_rangefinder_trigger_cm, 
+        k_param_rangefinder_min_thresh, 
         k_param_rangefinder_turn_angle, // unused
         k_param_rangefinder_turn_time,  // unused
         k_param_sonar2_old,           // unused
@@ -267,6 +268,7 @@ public:
     // obstacle parameters
     //
     AP_Int16     rangefinder_trigger_cm;
+    AP_Int16     rangefinder_min_thresh;
 
     Parameters() {}
 };

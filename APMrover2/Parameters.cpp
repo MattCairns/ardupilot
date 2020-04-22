@@ -235,6 +235,16 @@ const AP_Param::Info Rover::var_info[] = {
     // @User: Standard
     GSCALAR(rangefinder_trigger_cm, "OBJ_TRIG_DIST", 100),
 
+    // @Param: OBJ_TRIG_DIST
+    // @DisplayName: Trigger Distance for Rangefinder 
+    // @Description: Any distance under thresh will not trigger a HOLD command from rangefinder. 
+    // @Units: cm
+    // @Range: 0 10000
+    // @Increment: 1
+    // @User: Standard
+    GSCALAR(rangefinder_min_thresh, "RNGFND1_MIN_THRESH", 50),
+
+
     // variables not in the g class which contain EEPROM saved variables
 
     // @Group: COMPASS_
