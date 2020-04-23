@@ -233,7 +233,7 @@ const AP_Param::Info Rover::var_info[] = {
     // @Range: 0 10000
     // @Increment: 1
     // @User: Standard
-    GSCALAR(rangefinder_trigger_cm, "RNGFND1_MAX_TRIG", 1000),
+    GSCALAR(rngfnd1_max_trig, "RNGFND1_MAX_TRIG", 1000),
 
     // @Param: RNGFND1_MIN_TRIG
     // @DisplayName: Min trigger distance for Rangefinder 
@@ -242,7 +242,7 @@ const AP_Param::Info Rover::var_info[] = {
     // @Range: 0 10000
     // @Increment: 1
     // @User: Standard
-    GSCALAR(rangefinder_min_thresh, "RNGFND1_MIN_TRIG", 50),
+    GSCALAR(rngfnd1_min_trig, "RNGFND1_MIN_TRIG", 50),
 
 
     // variables not in the g class which contain EEPROM saved variables
