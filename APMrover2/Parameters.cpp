@@ -226,23 +226,23 @@ const AP_Param::Info Rover::var_info[] = {
     // @User: Standard
     GSCALAR(turn_max_g,             "TURN_MAX_G",      0.6f),
 
-    // @Param: OBJ_TRIG_DIST
-    // @DisplayName: Trigger Distance for Rangefinder 
-    // @Description: This minimum distance where the rangefinder will trigger HOLD mode for the vessel.  
+    // @Param: RNGFND1_MAX_TRIG
+    // @DisplayName: Max Trigger Distance for Rangefinder 
+    // @Description: This maximum distance where the rangefinder will trigger HOLD mode for the vessel.  
     // @Units: cm
     // @Range: 0 10000
     // @Increment: 1
     // @User: Standard
-    GSCALAR(rangefinder_trigger_cm, "OBJ_TRIG_DIST", 100),
+    GSCALAR(rangefinder_trigger_cm, "RNGFND1_MAX_TRIG", 1000),
 
-    // @Param: OBJ_TRIG_DIST
-    // @DisplayName: Trigger Distance for Rangefinder 
-    // @Description: Any distance under thresh will not trigger a HOLD command from rangefinder. 
+    // @Param: RNGFND1_MIN_TRIG
+    // @DisplayName: Min trigger distance for Rangefinder 
+    // @Description: The minimum distance where the rangefinde will trigger HOLD mode for the vessel. 
     // @Units: cm
     // @Range: 0 10000
     // @Increment: 1
     // @User: Standard
-    GSCALAR(rangefinder_min_thresh, "RNGFND1_MIN_THRESH", 50),
+    GSCALAR(rangefinder_min_thresh, "RNGFND1_MIN_TRIG", 50),
 
 
     // variables not in the g class which contain EEPROM saved variables
