@@ -125,7 +125,7 @@ void Rover::read_rangefinders(void)
     if (s0 != nullptr && s0->has_data()) {
         uint16_t dist = s0->distance_cm();
 
-        if (dist < g.lidar_max_trig ) {//&& dist > g.lidar_min_trig) {
+        if (dist < g.lidar_max_trig && dist > g.lidar_min_trig) {
             // Log the distance from sensor
             gcs().send_text(MAV_SEVERITY_INFO, "LiDAR: Obstacle %u cm away.", dist);
 

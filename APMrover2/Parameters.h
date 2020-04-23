@@ -150,7 +150,8 @@ public:
         // obstacle control
         k_param_sonar_enabled = 190,  // deprecated, can be removed
         k_param_sonar_old,            // unused
-        k_param_rangefinder_turn_angle, // unused
+        k_param_lidar_max_trig,
+        k_param_lidar_min_trig,
         k_param_rangefinder_turn_time,  // unused
         k_param_sonar2_old,           // unused
         k_param_rangefinder_debounce, // unused
@@ -213,9 +214,6 @@ public:
         // 254,255: reserved
 
         k_param_vehicle = 257, // vehicle common block of parameters
-        k_param_lidar_max_trig,
-        k_param_lidar_min_trig,
-
 
         };
 
