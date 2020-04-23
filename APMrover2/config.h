@@ -20,6 +20,14 @@
   #define ARM_DELAY_MS  2000
 #endif
 
+#ifndef LIDAR_MAX_TRIG
+  #define LIDAR_MAX_TRIG  1000
+#endif
+
+#ifndef LIDAR_MIN_TRIG
+  #define LIDAR_MIN_TRIG  50
+#endif
+
 //////////////////////////////////////////////////////////////////////////////
 // FrSky telemetry support
 //

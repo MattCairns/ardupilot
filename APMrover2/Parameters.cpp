@@ -226,23 +226,23 @@ const AP_Param::Info Rover::var_info[] = {
     // @User: Standard
     GSCALAR(turn_max_g,             "TURN_MAX_G",      0.6f),
 
-    // @Param: RNGFND1_MAX_TRIG
+    // @Param: LIDAR_MAX_TRIG
     // @DisplayName: Max Trigger Distance for Rangefinder 
     // @Description: This maximum distance where the rangefinder will trigger HOLD mode for the vessel.  
     // @Units: cm
     // @Range: 0 10000
     // @Increment: 1
     // @User: Standard
-    GSCALAR(rngfnd1_max_trig, "RNGFND1_MAX_TRIG", 1000),
+    GSCALAR(lidar_max_trig, "LIDAR_MAX_TRIG", 1000),
 
-    // @Param: RNGFND1_MIN_TRIG
+    // @Param: LIDAR_MIN_TRIG
     // @DisplayName: Min trigger distance for Rangefinder 
     // @Description: The minimum distance where the rangefinde will trigger HOLD mode for the vessel. 
     // @Units: cm
     // @Range: 0 10000
     // @Increment: 1
     // @User: Standard
-    GSCALAR(rngfnd1_min_trig, "RNGFND1_MIN_TRIG", 50),
+    GSCALAR(lidar_min_trig, "LIDAR_MIN_TRIG", 50),
 
 
     // variables not in the g class which contain EEPROM saved variables
